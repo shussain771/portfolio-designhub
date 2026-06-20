@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DesignHub — One Stop Graphic Solution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #090A24;
+    --bg-card: #11143A;
+    --bg-hover: #171B48;
+    --border: rgba(255,255,255,0.08);
+    --border-mid: rgba(255,255,255,0.14);
+    --text: #ffffff;
+    --text-muted: rgba(159,179,200,0.85);
+    --text-faint: rgba(159,179,200,0.5);
+    --accent: #22D3EE;
+    --accent-hover: #0FB6D4;
+    --accent-ink: #06222B;
+    --accent-light: #67E8F9;
+    --accent-dim: rgba(34,211,238,0.12);
+    --accent-border: rgba(34,211,238,0.32);
+    --brand: #2E2EC4;
+    --brand-deep: #1A1A8E;
+    --font-display: 'Archivo', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { position: relative; background: linear-gradient(180deg, #2A2EA6 0%, #1D2080 14%, #141652 40%, #0C0E34 72%, #090A24 100%); background-attachment: fixed; color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1; -webkit-font-smoothing: antialiased; }
+  /* Scrim that dims the mesh toward the page bottom for readability */
+  body::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, transparent 0%, transparent 28%, rgba(9,10,36,0.40) 60%, rgba(9,10,36,0.74) 100%); }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(9,10,36,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 60px; }
+  .logo { display: flex; align-items: center; gap: 11px; font-size: 17px; font-weight: 600; letter-spacing: -0.3px; color: #fff; text-decoration: none; }
+  .logo span { color: var(--accent); }
+  /* Logo badge with spinning multi-color halo */
+  .logo-badge { position: relative; flex-shrink: 0; display: inline-grid; place-items: center; }
+  .logo-badge .halo { position: absolute; inset: -3px; border-radius: 50%; background: conic-gradient(from 0deg, #FF3D9A, #FF8A00, #FFD000, #22D3EE, #4F46E5, #FF3D9A); animation: badgeSpin 7s linear infinite; z-index: 0; }
+  .logo-badge img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: var(--bg); display: block; }
+  .logo-badge-sm { width: 34px; height: 34px; animation: badgeGlow 3.5s ease-in-out infinite; border-radius: 50%; }
+  .logo-badge-lg { width: 48px; height: 48px; border-radius: 50%; }
+  @keyframes badgeSpin { to { transform: rotate(360deg); } }
+  @keyframes badgeGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); } 50% { box-shadow: 0 0 16px 2px rgba(34,211,238,0.30); } }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-badge .halo { animation: none; }
+    .logo-badge-sm { animation: none; }
+  }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: var(--accent) !important; color: var(--accent-ink) !important; padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+  .nav-cta:hover { background: var(--accent-hover) !important; }
+
+  /* HERO */
+  .hero-wrap { position: relative; border-bottom: 1px solid var(--border); }
+  .hero-wrap::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(12,13,52,0.55) 0%, rgba(12,13,52,0.16) 42%, transparent 66%); }
+  .hero { position: relative; z-index: 2; padding: 7rem 2.5rem 5.5rem; max-width: 1100px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 7px; background: var(--accent-dim); border: 1px solid var(--accent-border); color: var(--accent-light); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; margin-bottom: 2rem; }
+  .hero h1 { font-size: 58px; font-weight: 600; line-height: 1.08; letter-spacing: -2px; color: #fff; margin-bottom: 1.5rem; max-width: 640px; }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 420px; margin-bottom: 2.5rem; }
+  .hero-btns { display: flex; gap: 12px; }
+  .btn { padding: 12px 26px; border-radius: 9px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.15s; border: 1px solid var(--border-mid); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.7); display: inline-flex; align-items: center; gap: 7px; }
+  .btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .btn-p { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .btn-p:hover { background: var(--accent-hover); color: var(--accent-ink); }
+
+  /* STATS */
+  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+  .stat { padding: 2rem 2.5rem; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-n { font-size: 28px; font-weight: 600; color: #fff; letter-spacing: -1px; margin-bottom: 5px; }
+  .stat-l { font-size: 12px; color: var(--text-faint); line-height: 1.4; }
+
+  /* SECTION */
+  .section { padding: 4rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .kicker { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .sec-title { font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .sec-body { font-size: 14px; color: var(--text-muted); line-height: 1.65; max-width: 500px; margin-bottom: 2.5rem; }
+  .sub-kicker { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; }
+
+  /* SERVICES */
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .svc { background: rgba(13,16,52,0.45); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); padding: 1.75rem; transition: background 0.18s; position: relative; }
+  .svc:hover { background: rgba(24,28,78,0.62); }
+  .svc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; }
+  .svc-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .svc-num { font-size: 11px; color: var(--text-faint); font-weight: 500; }
+  .svc-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; letter-spacing: -0.1px; }
+  .svc-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .svc-foot { margin-top: 1.1rem; font-size: 11px; color: var(--text-faint); display: flex; align-items: center; gap: 5px; }
+  .svc-wide { grid-column: span 3; border-top: 1px solid var(--border); }
+  .svc-wide-inner { display: flex; align-items: center; gap: 1.5rem; }
+  .svc-wide .svc-desc { max-width: 400px; }
+
+  /* WORK */
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card { background: rgba(15,18,56,0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: border-color 0.18s, transform 0.18s; }
+  .card:hover { border-color: rgba(34,211,238,0.45); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(34,211,238,0.10); }
+  .card-thumb { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+  .thumb-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+  .thumb-fallback-label { font-size: 12px; font-weight: 500; opacity: 0.75; }
+  .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .browser-view .thumb-img { object-position: top; }
+  .poster-img { object-fit: contain !important; padding: 16px; box-sizing: border-box; }
+  /* Browser-window frame for website cards */
+  .browser-frame { position: absolute; inset: 0; display: flex; flex-direction: column; background: #0A0B10; }
+  .browser-bar { height: 28px; flex-shrink: 0; display: flex; align-items: center; gap: 6px; padding: 0 11px; background: #15171F; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .browser-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .browser-url { margin-left: 8px; flex: 1; font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); border-radius: 5px; padding: 3px 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .browser-view { position: relative; flex: 1; overflow: hidden; }
+  .card-body { padding: 16px 18px; border-top: 1px solid var(--border); }
+  .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .badge { font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 999px; }
+  .b-poster { background: rgba(34,211,238,0.13); color: #67E8F9; }
+  .b-web { background: rgba(56,189,248,0.1); color: #7DD3FC; }
+  .card-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; letter-spacing: -0.1px; }
+  .card-sub { font-size: 12px; color: var(--text-faint); }
+  .card-url { font-size: 11px; color: var(--text-faint); margin-top: 5px; }
+
+  /* CONTACT */
+  .contact-box { background: rgba(15,18,56,0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 18px; padding: 3rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .contact-title { font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .contact-sub { font-size: 14px; color: var(--text-muted); line-height: 1.65; max-width: 360px; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; min-width: 250px; }
+  .c-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; background: rgba(255,255,255,0.03); transition: all 0.15s; }
+  .c-link:hover { background: rgba(255,255,255,0.07); border-color: var(--border-mid); }
+  .c-link-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .c-link-text-label { font-size: 10px; color: var(--text-faint); margin-bottom: 2px; }
+  .c-link-text-val { font-size: 13px; color: rgba(255,255,255,0.75); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .footer-logo { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.4); }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+  /* Display font on headings (echoes the logo's bold type) */
+  .hero h1, .sec-title, .stat-n, .contact-title, .logo, .footer-logo { font-family: var(--font-display); }
+  .hero h1 { font-weight: 800; letter-spacing: -1.5px; }
+  .sec-title, .contact-title { font-weight: 700; }
+  .stat-n { font-weight: 800; }
+  .logo { font-weight: 800; letter-spacing: -0.5px; }
+
+  /* Slash motif — the signature mark from the logo */
+  .kicker { display: inline-flex; align-items: center; gap: 8px; }
+  .kicker::before { content: ''; width: 14px; height: 2px; background: var(--accent); transform: skewX(32deg); display: inline-block; }
+  .slash { color: var(--accent); font-family: var(--font-display); font-weight: 800; transform: skewX(8deg); display: inline-block; margin: 0 2px; }
+
+  /* Wireframe mesh (echoes the logo background) */
+  .bg-mesh { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  body > nav, body > div, body > footer { position: relative; z-index: 1; }
+
+  /* Scroll-reveal motion */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 36px; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .svc-grid { grid-template-columns: 1fr; }
+    .svc-wide { grid-column: span 1; }
+    .work-grid { grid-template-columns: 1fr; }
+    .contact-box { flex-direction: column; align-items: flex-start; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .section { padding: 3rem 1.25rem; }
+    .hero { padding: 4rem 1.25rem 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas class="bg-mesh" id="bgMesh" aria-hidden="true"></canvas>
+
+<nav>
+  <a class="logo" href="#">
+    <span class="logo-badge logo-badge-sm"><span class="halo"></span><img src="images/logo.jpg" alt="DesignHub logo" onerror="this.closest('.logo-badge').style.display='none'"></span>
+    Design<span>Hub</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="https://www.instagram.com/designhub771/" target="_blank">Instagram</a>
+    <a class="nav-cta" href="#contact">Let's talk →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-tag"><i class="ti ti-map-pin"></i> Tripura, India</div>
+    <h1><span class="slash">\</span> Design that makes your brand <span>unforgettable.</span></h1>
+    <p class="hero-sub">Posters. Websites. Logos. Brands. Everything your business needs to look incredible — in one place.</p>
+    <div class="hero-btns">
+      <a class="btn btn-p" href="#work">See my work</a>
+      <a class="btn" href="#services">What I do</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Projects delivered</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">Live websites built</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Govt & org clients</div></div>
+    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Design services</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="section" id="services">
+    <div class="kicker">What I do</div>
+    <div class="sec-title">Design for every need.</div>
+    <p class="sec-body">From a single social post to a complete brand identity — I've got you covered.</p>
+
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:rgba(34,211,238,0.13)"><i class="ti ti-layout" style="font-size:20px;color:#67E8F9"></i></div>
+          <span class="svc-num">01</span>
+        </div>
+        <div class="svc-name">Website Design</div>
+        <div class="svc-desc">Clean, fast, conversion-ready websites that look great on every screen and turn visitors into customers.</div>
+        <div class="svc-foot"><i class="ti ti-arrow-right"></i> 2 live projects</div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:rgba(56,189,248,0.1)"><i class="ti ti-device-mobile" style="font-size:20px;color:#7DD3FC"></i></div>
+          <span class="svc-num">02</span>
+        </div>
+        <div class="svc-name">Mobile App Design</div>
+        <div class="svc-desc">Intuitive UI/UX that makes users fall in love with your app on the very first tap.</div>
+        <div class="svc-foot"><i class="ti ti-arrow-right"></i> UI / UX design</div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:rgba(251,146,60,0.1)"><i class="ti ti-ticket" style="font-size:20px;color:#FB923C"></i></div>
+          <span class="svc-num">03</span>
+        </div>
+        <div class="svc-name">Event Poster Design</div>
+        <div class="svc-desc">Bold, attention-grabbing posters for events, campaigns and programs that demand notice.</div>
+        <div class="svc-foot"><i class="ti ti-arrow-right"></i> 4 posters made</div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:rgba(251,191,36,0.1)"><i class="ti ti-diamond" style="font-size:20px;color:#FCD34D"></i></div>
+          <span class="svc-num">04</span>
+        </div>
+        <div class="svc-name">Logo Design</div>
+        <div class="svc-desc">A logo that speaks before you say a word. Timeless, versatile, and unmistakably yours.</div>
+        <div class="svc-foot"><i class="ti ti-arrow-right"></i> Brand identity</div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:rgba(52,211,153,0.1)"><i class="ti ti-crown" style="font-size:20px;color:#34D399"></i></div>
+          <span class="svc-num">05</span>
+        </div>
+        <div class="svc-name">Brand Building</div>
+        <div class="svc-desc">Colors, type, tone — a full identity system that stays consistent across every touchpoint.</div>
+        <div class="svc-foot"><i class="ti ti-arrow-right"></i> Full system</div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:rgba(244,63,94,0.1)"><i class="ti ti-brand-instagram" style="font-size:20px;color:#FB7185"></i></div>
+          <span class="svc-num">06</span>
+        </div>
+        <div class="svc-name">Social Media Banners</div>
+        <div class="svc-desc">Scroll-stopping posts and banners for Instagram, Facebook and every platform you're on.</div>
+        <div class="svc-foot"><i class="ti ti-arrow-right"></i> All platforms</div>
+      </div>
+
+      <div class="svc svc-wide">
+        <div class="svc-wide-inner">
+          <div class="svc-icon" style="background:rgba(239,68,68,0.1);flex-shrink:0"><i class="ti ti-brand-youtube" style="font-size:20px;color:#F87171"></i></div>
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div class="svc-name" style="margin-bottom:0">YouTube Thumbnail Design</div>
+              <span class="svc-num">07</span>
+            </div>
+            <div class="svc-desc">High-CTR thumbnails designed to win clicks in a crowded feed. Bold, clear, and impossible to scroll past.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="section" id="work">
+    <div class="kicker">Selected work</div>
+    <div class="sec-title">Projects I've worked on.</div>
+    <p class="sec-body">Real clients, real results — from government bodies to local businesses.</p>
+
+    <div class="sub-kicker">Event posters</div>
+    <div class="work-grid" style="margin-bottom:2rem">
+      <div class="card">
+        <div class="card-thumb" style="background:#EEF0F5">
+          <div class="thumb-fallback"><i class="ti ti-sun" style="font-size:42px;color:#F5A623"></i><span class="thumb-fallback-label" style="color:#F5A623">Yoga Day 2026</span></div>
+          <img class="thumb-img poster-img" src="images/yoga.jpg" alt="International Day of Yoga 2026 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/yoga.png'}">
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
+          <div class="card-title">International Day of Yoga 2026</div>
+          <div class="card-sub">Forest Dept · Govt of Tripura · JICA</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb" style="background:#121233">
+          <div class="thumb-fallback"><i class="ti ti-tree" style="font-size:42px;color:#4CAF50"></i><span class="thumb-fallback-label" style="color:#4CAF50">Swachhta Pakhwada 2026</span></div>
+          <img class="thumb-img poster-img" src="images/swachhta.jpg" alt="Swachhta Pakhwada 2026 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/swachhta.png'}">
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
+          <div class="card-title">Swachhta Pakhwada 2026</div>
+          <div class="card-sub">Teliamura Forest Range · Baramura Eco Park</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb" style="background:#F1EFE8">
+          <div class="thumb-fallback"><i class="ti ti-writing" style="font-size:42px;color:#F5A623"></i><span class="thumb-fallback-label" style="color:#F5A623">Arkan Ijtema 2025</span></div>
+          <img class="thumb-img poster-img" src="images/ijtema.jpg" alt="All Tripura Arkan Ijtema 2025 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/ijtema.png'}">
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
+          <div class="card-title">All Tripura Arkan Ijtema 2025</div>
+          <div class="card-sub">Bilingual design · Assam South</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb" style="background:#F2EFE6">
+          <div class="thumb-fallback"><i class="ti ti-moon-stars" style="font-size:42px;color:#86EFAC"></i><span class="thumb-fallback-label" style="color:#86EFAC">Islamic Camp 2025</span></div>
+          <img class="thumb-img poster-img" src="images/islamic-camp.jpg" alt="Summer Islamic Camp 2025 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/islamic-camp.png'}">
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
+          <div class="card-title">Summer Islamic Camp 2025</div>
+          <div class="card-sub">SIO Tripura · Kailashahar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-kicker">Web design</div>
+    <div class="work-grid">
+      <a class="card" href="https://northeast-healthcare.onrender.com/" target="_blank">
+        <div class="card-thumb">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="browser-dot" style="background:#FF5F57"></span>
+              <span class="browser-dot" style="background:#FEBC2E"></span>
+              <span class="browser-dot" style="background:#28C840"></span>
+              <span class="browser-url">northeast-healthcare.onrender.com</span>
+            </div>
+            <div class="browser-view" style="background:#080F1C">
+              <div class="thumb-fallback"><i class="ti ti-stethoscope" style="font-size:42px;color:#38BDF8"></i><span class="thumb-fallback-label" style="color:#38BDF8">Northeast Healthcare</span></div>
+              <img class="thumb-img" src="images/web-healthcare.jpg" alt="Northeast Healthcare website" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='https://api.microlink.io/?url=https%3A%2F%2Fnortheast-healthcare.onrender.com&screenshot=true&meta=false&embed=screenshot.url'}">
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge b-web">Website</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
+          <div class="card-title">Northeast Healthcare</div>
+          <div class="card-sub">Healthcare web app · Tripura</div>
+          <div class="card-url">northeast-healthcare.onrender.com ↗</div>
+        </div>
+      </a>
+      <a class="card" href="https://laxmi-candle-store.vercel.app/" target="_blank">
+        <div class="card-thumb">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="browser-dot" style="background:#FF5F57"></span>
+              <span class="browser-dot" style="background:#FEBC2E"></span>
+              <span class="browser-dot" style="background:#28C840"></span>
+              <span class="browser-url">laxmi-candle-store.vercel.app</span>
+            </div>
+            <div class="browser-view" style="background:#160C04">
+              <div class="thumb-fallback"><i class="ti ti-flame" style="font-size:42px;color:#FB923C"></i><span class="thumb-fallback-label" style="color:#FB923C">Laxmi Candle Store</span></div>
+              <img class="thumb-img" src="images/web-laxmi.jpg" alt="Laxmi Candle Store website" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='https://api.microlink.io/?url=https%3A%2F%2Flaxmi-candle-store.vercel.app&screenshot=true&meta=false&embed=screenshot.url'}">
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge b-web">Website</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
+          <div class="card-title">Laxmi Candle Store</div>
+          <div class="card-sub">Wholesale e-commerce · Agartala</div>
+          <div class="card-url">laxmi-candle-store.vercel.app ↗</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="section" id="contact">
+    <div class="kicker">Get in touch</div>
+    <div class="contact-box">
+      <div>
+        <div class="contact-title">Got a project?<br>Let's talk.</div>
+        <p class="contact-sub" style="margin-top:0.75rem">Whether it's a poster, logo, website, or full brand — drop a message and I'll get back to you quickly.</p>
+      </div>
+      <div class="contact-links">
+        <a class="c-link" href="mailto:shussain771@gmail.com">
+          <div class="c-link-icon" style="background:rgba(34,211,238,0.13)"><i class="ti ti-mail" style="font-size:17px;color:#67E8F9"></i></div>
+          <div>
+            <div class="c-link-text-label">Email</div>
+            <div class="c-link-text-val">shussain771@gmail.com</div>
+          </div>
+        </a>
+        <a class="c-link" href="https://www.instagram.com/designhub771/" target="_blank">
+          <div class="c-link-icon" style="background:rgba(251,113,133,0.1)"><i class="ti ti-brand-instagram" style="font-size:17px;color:#FB7185"></i></div>
+          <div>
+            <div class="c-link-text-label">Instagram</div>
+            <div class="c-link-text-val">@designhub771</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto">
+  <footer>
+    <span class="footer-logo" style="display:flex;align-items:center;gap:12px;">
+      <span class="logo-badge logo-badge-lg"><span class="halo"></span><img src="images/logo.jpg" alt="DesignHub logo" onerror="this.closest('.logo-badge').style.display='none'"></span>
+      <span>Design<span>Hub</span></span>
+    </span>
+    <span class="footer-copy">© 2026 · One stop graphic solution · Tripura, India</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var c = document.getElementById('bgMesh');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var sp = 19, W = 0, H = 0, cols = 0, rows = 0, raf = 0;
+
+  function resize() {
+    W = window.innerWidth; H = window.innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    c.style.width = W + 'px'; c.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(W / sp) + 4; rows = Math.ceil(H / sp) + 10;
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    var i, j;
+    var A = 30, A2 = 16, A3 = 9;
+    var tt = t * 0.001;
+    for (j = -5; j <= rows; j++) {
+      for (i = -2; i <= cols; i++) {
+        var phase = i * 0.17 + j * 0.20 + tt * 0.9;
+        var crest = Math.sin(phase);
+        var y = j * sp
+              + A * crest
+              + A2 * Math.sin(i * 0.06 - j * 0.11 + tt * 0.6)
+              + A3 * Math.sin((i + j) * 0.09 + tt * 1.3);
+        var x = i * sp + Math.sin(j * 0.28 + tt * 0.5) * 7;
+        var d = crest * 0.5 + 0.5;
+        var a = 0.12 + 0.42 * d * d;
+        ctx.fillStyle = 'rgba(221,229,255,' + a + ')';
+        ctx.beginPath(); ctx.arc(x, y, 0.85 + 0.55 * d, 0, 6.283); ctx.fill();
+      }
+    }
+  }
+
+  function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+  function start() { resize(); cancelAnimationFrame(raf); if (reduce) draw(2000); else raf = requestAnimationFrame(loop); }
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(start, 150); });
+  start();
+})();
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mark elements for reveal
+  var targets = [];
+  document.querySelectorAll('.section, .stats-bar, .hero, .contact-box').forEach(function (s) { targets.push(s); });
+  document.querySelectorAll('.svc, .card').forEach(function (s) { targets.push(s); });
+  targets.forEach(function (el) { el.classList.add('reveal'); });
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var groups = new WeakMap();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var el = e.target;
+          var delay = groups.get(el) || 0;
+          el.style.transitionDelay = delay + 'ms';
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    // Stagger children within each grid
+    document.querySelectorAll('.svc-grid, .work-grid').forEach(function (grid) {
+      var i = 0;
+      grid.querySelectorAll('.svc, .card').forEach(function (child) {
+        groups.set(child, (i % 6) * 80); i++;
+      });
+    });
+
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
+  // Animated stat count-up
+  function animateCount(el) {
+    var raw = el.getAttribute('data-target') || el.textContent;
+    var m = String(raw).match(/(\d+)(\D*)/);
+    if (!m) return;
+    var target = parseInt(m[1], 10), suffix = m[2] || '';
+    if (reduce) { el.textContent = target + suffix; return; }
+    var start = null, dur = 1100;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var statNums = document.querySelectorAll('.stat-n');
+  statNums.forEach(function (el) { el.setAttribute('data-target', el.textContent); el.textContent = '0'; });
+  var statsBar = document.querySelector('.stats-bar');
+  if (statsBar) {
+    if (reduce || !('IntersectionObserver' in window)) {
+      statNums.forEach(animateCount);
+    } else {
+      var sObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { statNums.forEach(animateCount); sObs.disconnect(); }
+        });
+      }, { threshold: 0.4 });
+      sObs.observe(statsBar);
+    }
+  }
+})();
+</script>
+</body>
+</html>
