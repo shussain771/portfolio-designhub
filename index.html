@@ -3,9 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DesignHub — One Stop Graphic Solution</title>
+<title>DesignHub — One Stop Graphic Solution | Tripura</title>
+<meta name="description" content="DesignHub — one stop graphic solution in Tripura, India. Event posters, logo design, websites, branding, social media graphics & YouTube thumbnails. Trusted by Govt of Tripura, Forest Dept & more.">
+<meta name="keywords" content="DesignHub, graphic design Tripura, poster design, logo design, website design, branding, Agartala designer, social media design">
+<meta name="author" content="DesignHub">
+<meta name="theme-color" content="#1D2080">
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="apple-touch-icon" href="images/logo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DesignHub — One Stop Graphic Solution">
+<meta property="og:description" content="Posters, websites, logos & brands that make businesses stand out. Based in Tripura, India.">
+<meta property="og:image" content="https://portfolio-designhub.vercel.app/images/logo.jpg">
+<meta property="og:url" content="https://portfolio-designhub.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DesignHub — One Stop Graphic Solution">
+<meta name="twitter:description" content="Posters, websites, logos & brands that make businesses stand out. Based in Tripura, India.">
+<meta name="twitter:image" content="https://portfolio-designhub.vercel.app/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,12 +33,12 @@
     --text: #ffffff;
     --text-muted: rgba(159,179,200,0.85);
     --text-faint: rgba(159,179,200,0.5);
-    --accent: #22D3EE;
-    --accent-hover: #0FB6D4;
-    --accent-ink: #06222B;
-    --accent-light: #67E8F9;
-    --accent-dim: rgba(34,211,238,0.12);
-    --accent-border: rgba(34,211,238,0.32);
+    --accent: #FBBF24;
+    --accent-hover: #F59E0B;
+    --accent-ink: #3A2800;
+    --accent-light: #FCD34D;
+    --accent-dim: rgba(251,191,36,0.12);
+    --accent-border: rgba(251,191,36,0.34);
     --brand: #2E2EC4;
     --brand-deep: #1A1A8E;
     --font-display: 'Archivo', sans-serif;
@@ -35,8 +50,8 @@
 
   /* NAV */
   nav { position: sticky; top: 0; z-index: 100; background: rgba(9,10,36,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 60px; }
-  .logo { display: flex; align-items: center; gap: 11px; font-size: 17px; font-weight: 600; letter-spacing: -0.3px; color: #fff; text-decoration: none; }
-  .logo span { color: var(--accent); }
+  .logo { display: flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 600; letter-spacing: -0.4px; color: #fff; text-decoration: none; font-family: 'Crimson Text', serif; }
+  .logo span { color: var(--accent); font-weight: 600; }
   /* Logo badge with spinning multi-color halo */
   .logo-badge { position: relative; flex-shrink: 0; display: inline-grid; place-items: center; }
   .logo-badge .halo { position: absolute; inset: -3px; border-radius: 50%; background: conic-gradient(from 0deg, #FF3D9A, #FF8A00, #FFD000, #22D3EE, #4F46E5, #FF3D9A); animation: badgeSpin 7s linear infinite; z-index: 0; }
@@ -44,10 +59,52 @@
   .logo-badge-sm { width: 34px; height: 34px; animation: badgeGlow 3.5s ease-in-out infinite; border-radius: 50%; }
   .logo-badge-lg { width: 48px; height: 48px; border-radius: 50%; }
   @keyframes badgeSpin { to { transform: rotate(360deg); } }
-  @keyframes badgeGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); } 50% { box-shadow: 0 0 16px 2px rgba(34,211,238,0.30); } }
+  @keyframes badgeGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); } 50% { box-shadow: 0 0 16px 2px rgba(251,191,36,0.32); } }
   @media (prefers-reduced-motion: reduce) {
     .logo-badge .halo { animation: none; }
     .logo-badge-sm { animation: none; }
+  }
+
+  /* Poster mockup — magazine spread frame */
+  .poster-mockup { position: relative; background: #ffffff; border-radius: 18px; padding: 12px; box-shadow: 0 18px 50px rgba(0,0,0,0.22); }
+  .poster-mockup-inner { position: relative; border-radius: 11px; overflow: hidden; background: #f2f2f4; }
+  .card.poster-card:hover { transform: translateY(-6px); }
+  .card.poster-card { cursor: pointer; }
+
+  /* Modal lightbox */
+  .modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; }
+  .modal.open { display: flex; animation: fadeIn 0.3s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal-content { background: linear-gradient(180deg, #2A2EA6 0%, #1D2080 14%, #141652 40%, #0C0E34 72%, #090A24 100%); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 0; position: relative; animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.2s; }
+  .modal-close:hover { background: rgba(255,255,255,0.2); }
+  .modal-close::before { content: '×'; font-size: 28px; color: #fff; line-height: 1; }
+  .modal-img { width: 100%; height: auto; display: block; border-radius: 16px 16px 0 0; }
+  .modal-body { padding: 32px; }
+  .modal-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .modal-desc { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 1.5rem; }
+  .modal-meta { font-size: 13px; color: rgba(255,255,255,0.5); padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+  /* Website mockup — laptop frame */
+  .laptop-frame { position: relative; background: #e8e8e8; border-radius: 16px; padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .laptop-frame::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 60%; height: 8px; background: #d0d0d0; border-radius: 0 0 8px 8px; }
+  .laptop-screen { position: relative; background: #fff; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 10; }
+  .laptop-screen img { width: 100%; height: auto; display: block; }
+  .card.web-card { cursor: default; }
+
+  /* Floating WhatsApp button */
+  .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; border-radius: 50%; box-shadow: 0 4px 16px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
+  .whatsapp-float i { font-size: 30px; color: #fff; position: relative; z-index: 2; }
+  .whatsapp-float:hover { transform: scale(1.1) rotate(8deg); box-shadow: 0 6px 24px rgba(37,211,102,0.65); }
+  .whatsapp-float::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #25D366; z-index: 1; animation: waPulse 2.2s ease-out infinite; }
+  @keyframes waPulse { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.9); opacity: 0; } }
+  .whatsapp-tooltip { position: absolute; right: 74px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.82); color: #fff; padding: 9px 14px; border-radius: 8px; font-size: 13px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 3; }
+  .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .whatsapp-float::before { animation: none; } }
+
+  @media (max-width: 700px) {
+    .whatsapp-float { bottom: 20px; right: 20px; }
   }
   .nav-links { display: flex; align-items: center; gap: 2rem; }
   .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
@@ -100,13 +157,13 @@
   /* WORK */
   .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .card { background: rgba(15,18,56,0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: border-color 0.18s, transform 0.18s; }
-  .card:hover { border-color: rgba(34,211,238,0.45); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(34,211,238,0.10); }
+  .card:hover { border-color: rgba(251,191,36,0.45); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(251,191,36,0.12); }
   .card-thumb { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
   .thumb-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
   .thumb-fallback-label { font-size: 12px; font-weight: 500; opacity: 0.75; }
   .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   .browser-view .thumb-img { object-position: top; }
-  .poster-img { object-fit: contain !important; padding: 16px; box-sizing: border-box; }
+  .poster-img { object-fit: cover !important; object-position: center top; }
   /* Browser-window frame for website cards */
   .browser-frame { position: absolute; inset: 0; display: flex; flex-direction: column; background: #0A0B10; }
   .browser-bar { height: 28px; flex-shrink: 0; display: flex; align-items: center; gap: 6px; padding: 0 11px; background: #15171F; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -116,7 +173,7 @@
   .card-body { padding: 16px 18px; border-top: 1px solid var(--border); }
   .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .badge { font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 999px; }
-  .b-poster { background: rgba(34,211,238,0.13); color: #67E8F9; }
+  .b-poster { background: rgba(251,191,36,0.14); color: #FCD34D; }
   .b-web { background: rgba(56,189,248,0.1); color: #7DD3FC; }
   .card-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; letter-spacing: -0.1px; }
   .card-sub { font-size: 12px; color: var(--text-faint); }
@@ -162,6 +219,46 @@
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 
+  /* Trusted by strip */
+  .trusted { padding: 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .trusted-label { text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1.5rem; }
+  .trusted-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 16px; }
+  .client-chip { display: flex; align-items: center; gap: 9px; padding: 11px 18px; border: 1px solid var(--border); border-radius: 11px; background: rgba(255,255,255,0.03); transition: transform 0.25s, border-color 0.25s, background 0.25s; }
+  .client-chip:hover { border-color: var(--accent-border); background: rgba(251,191,36,0.07); transform: translateY(-3px); }
+  .client-chip i { font-size: 19px; color: var(--accent-light); }
+  .client-chip span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); letter-spacing: 0.2px; white-space: nowrap; }
+  @media (prefers-reduced-motion: reduce) { .client-chip { transition: none; } .client-chip:hover { transform: none; } }
+
+  /* Feel-good micro-motions */
+  .nav-links a:not(.nav-cta) { position: relative; }
+  .nav-links a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1.5px; background: var(--accent); transition: width 0.28s cubic-bezier(0.4,0,0.2,1); }
+  .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+  .btn { transition: transform 0.2s, background 0.15s, color 0.15s, box-shadow 0.2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-p:hover { box-shadow: 0 8px 22px rgba(251,191,36,0.35); }
+  .nav-cta { transition: transform 0.2s, background 0.2s; }
+  .nav-cta:hover { transform: translateY(-1px); }
+  .svc-icon { transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+  .svc:hover .svc-icon { transform: scale(1.14) rotate(-6deg); }
+  .thumb-img { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+  .card:hover .thumb-img { transform: scale(1.04); }
+  .poster-mockup { transition: box-shadow 0.3s; }
+  .poster-card:hover .poster-mockup { box-shadow: 0 26px 70px rgba(0,0,0,0.28); }
+  .c-link { transition: transform 0.2s, background 0.15s, border-color 0.15s; }
+  .c-link:hover { transform: translateX(5px); }
+  .c-link-icon { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+  .c-link:hover .c-link-icon { transform: scale(1.12); }
+  .badge { transition: transform 0.25s; }
+  .card:hover .badge { transform: translateY(-1px); }
+  .stat { transition: background 0.3s; }
+  .stat:hover { background: rgba(255,255,255,0.03); }
+  .pill { transition: transform 0.2s, border-color 0.2s, color 0.2s; }
+  .pill:hover { transform: translateY(-2px); border-color: var(--accent-border); color: var(--accent-light); }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-links a::after, .btn, .svc-icon, .thumb-img, .c-link, .c-link-icon, .badge, .pill { transition: none !important; }
+    .btn:hover, .svc:hover .svc-icon, .card:hover .thumb-img, .c-link:hover, .pill:hover { transform: none !important; }
+  }
+
   @media (max-width: 700px) {
     .hero h1 { font-size: 36px; }
     .stats-bar { grid-template-columns: repeat(2,1fr); }
@@ -197,11 +294,11 @@
 <div class="hero-wrap">
   <div class="hero">
     <div class="hero-tag"><i class="ti ti-map-pin"></i> Tripura, India</div>
-    <h1><span class="slash">\</span> Design that makes your brand <span>unforgettable.</span></h1>
+    <h1><span class="slash">\</span> Design that makes brands <span>unforgettable.</span></h1>
     <p class="hero-sub">Posters. Websites. Logos. Brands. Everything your business needs to look incredible — in one place.</p>
     <div class="hero-btns">
-      <a class="btn btn-p" href="#work">See my work</a>
-      <a class="btn" href="#services">What I do</a>
+      <a class="btn btn-p" href="#work">See our work</a>
+      <a class="btn" href="#services">What we do</a>
     </div>
   </div>
 </div>
@@ -216,17 +313,32 @@
   </div>
 </div>
 
+<!-- TRUSTED BY -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="trusted">
+    <div class="trusted-label">Trusted by government bodies & organizations</div>
+    <div class="trusted-row">
+      <div class="client-chip"><i class="ti ti-building-bank"></i><span>Govt of Tripura</span></div>
+      <div class="client-chip"><i class="ti ti-tree"></i><span>Forest Department</span></div>
+      <div class="client-chip"><i class="ti ti-world"></i><span>JICA</span></div>
+      <div class="client-chip"><i class="ti ti-map-pin"></i><span>Khowai District</span></div>
+      <div class="client-chip"><i class="ti ti-book"></i><span>SIO Tripura</span></div>
+      <div class="client-chip"><i class="ti ti-flower"></i><span>The Art of Living</span></div>
+    </div>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <div style="border-bottom:1px solid var(--border)">
   <div class="section" id="services">
-    <div class="kicker">What I do</div>
+    <div class="kicker">What we do</div>
     <div class="sec-title">Design for every need.</div>
-    <p class="sec-body">From a single social post to a complete brand identity — I've got you covered.</p>
+    <p class="sec-body">From a single social post to a complete brand identity — we've got you covered.</p>
 
     <div class="svc-grid">
       <div class="svc">
         <div class="svc-top">
-          <div class="svc-icon" style="background:rgba(34,211,238,0.13)"><i class="ti ti-layout" style="font-size:20px;color:#67E8F9"></i></div>
+          <div class="svc-icon" style="background:rgba(251,191,36,0.14)"><i class="ti ti-layout" style="font-size:20px;color:#FCD34D"></i></div>
           <span class="svc-num">01</span>
         </div>
         <div class="svc-name">Website Design</div>
@@ -303,16 +415,20 @@
 <!-- WORK -->
 <div style="border-bottom:1px solid var(--border)">
   <div class="section" id="work">
-    <div class="kicker">Selected work</div>
-    <div class="sec-title">Projects I've worked on.</div>
+    <div class="kicker">Our work</div>
+    <div class="sec-title">Projects we've delivered.</div>
     <p class="sec-body">Real clients, real results — from government bodies to local businesses.</p>
 
     <div class="sub-kicker">Event posters</div>
     <div class="work-grid" style="margin-bottom:2rem">
-      <div class="card">
-        <div class="card-thumb" style="background:#EEF0F5">
-          <div class="thumb-fallback"><i class="ti ti-sun" style="font-size:42px;color:#F5A623"></i><span class="thumb-fallback-label" style="color:#F5A623">Yoga Day 2026</span></div>
-          <img class="thumb-img poster-img" src="images/yoga.jpg" alt="International Day of Yoga 2026 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/yoga.png'}">
+      <div class="card poster-card" onclick="openPosterModal('images/yoga.jpg', 'International Day of Yoga 2026', 'A celebration of physical wellness and mental clarity. This poster was designed for the Forest Department and Government of Tripura, promoting yoga as a path to holistic health. Featuring serene nature backgrounds with the yoga emblem, it captures the essence of international wellness.', 'Forest Dept · Govt of Tripura · JICA · June 2026')">
+        <div class="poster-mockup">
+          <div class="poster-mockup-inner">
+            <div class="card-thumb" style="background:#EEF0F5">
+              <div class="thumb-fallback"><i class="ti ti-sun" style="font-size:42px;color:#F5A623"></i><span class="thumb-fallback-label" style="color:#F5A623">Yoga Day 2026</span></div>
+              <img class="thumb-img poster-img" src="images/yoga.jpg" alt="International Day of Yoga 2026 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/yoga.png'}">
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
@@ -320,10 +436,14 @@
           <div class="card-sub">Forest Dept · Govt of Tripura · JICA</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-thumb" style="background:#121233">
-          <div class="thumb-fallback"><i class="ti ti-tree" style="font-size:42px;color:#4CAF50"></i><span class="thumb-fallback-label" style="color:#4CAF50">Swachhta Pakhwada 2026</span></div>
-          <img class="thumb-img poster-img" src="images/swachhta.jpg" alt="Swachhta Pakhwada 2026 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/swachhta.png'}">
+      <div class="card poster-card" onclick="openPosterModal('images/swachhta.jpg', 'Swachhta Pakhwada 2026', 'Promoting cleanliness, environmental protection, and sustainable living. This poster celebrates the importance of keeping our forests and ecosystems clean. Designed for Teliamura Forest Range and Baramura Eco Park, it emphasizes community participation in preserving nature through visual storytelling and bold typography.', 'Teliamura Forest Range · Baramura Eco Park · June 2026')">
+        <div class="poster-mockup">
+          <div class="poster-mockup-inner">
+            <div class="card-thumb" style="background:#121233">
+              <div class="thumb-fallback"><i class="ti ti-tree" style="font-size:42px;color:#4CAF50"></i><span class="thumb-fallback-label" style="color:#4CAF50">Swachhta Pakhwada 2026</span></div>
+              <img class="thumb-img poster-img" src="images/swachhta.jpg" alt="Swachhta Pakhwada 2026 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/swachhta.png'}">
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
@@ -331,10 +451,14 @@
           <div class="card-sub">Teliamura Forest Range · Baramura Eco Park</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-thumb" style="background:#F1EFE8">
-          <div class="thumb-fallback"><i class="ti ti-writing" style="font-size:42px;color:#F5A623"></i><span class="thumb-fallback-label" style="color:#F5A623">Arkan Ijtema 2025</span></div>
-          <img class="thumb-img poster-img" src="images/ijtema.jpg" alt="All Tripura Arkan Ijtema 2025 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/ijtema.png'}">
+      <div class="card poster-card" onclick="openPosterModal('images/ijtema.jpg', 'All Tripura Arkan Ijtema 2025', 'A bilingual event poster celebrating spiritual gathering and cultural exchange. Designed for one of the largest Islamic congregations in South Asia, this poster combines traditional Islamic calligraphy with modern design principles. The bilingual layout (English and Bengali) ensures accessibility for diverse audiences.', 'Assam South · Unakoti, Tripura · September 2025')">
+        <div class="poster-mockup">
+          <div class="poster-mockup-inner">
+            <div class="card-thumb" style="background:#F1EFE8">
+              <div class="thumb-fallback"><i class="ti ti-writing" style="font-size:42px;color:#F5A623"></i><span class="thumb-fallback-label" style="color:#F5A623">Arkan Ijtema 2025</span></div>
+              <img class="thumb-img poster-img" src="images/ijtema.jpg" alt="All Tripura Arkan Ijtema 2025 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/ijtema.png'}">
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
@@ -342,10 +466,14 @@
           <div class="card-sub">Bilingual design · Assam South</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-thumb" style="background:#F2EFE6">
-          <div class="thumb-fallback"><i class="ti ti-moon-stars" style="font-size:42px;color:#86EFAC"></i><span class="thumb-fallback-label" style="color:#86EFAC">Islamic Camp 2025</span></div>
-          <img class="thumb-img poster-img" src="images/islamic-camp.jpg" alt="Summer Islamic Camp 2025 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/islamic-camp.png'}">
+      <div class="card poster-card" onclick="openPosterModal('images/islamic-camp.jpg', 'Summer Islamic Camp 2025', 'An educational and spiritual retreat for youth. This poster promotes a summer camp organized by Student Islamic Organization (SIO) in Kailashahar, Tripura. The design incorporates Islamic aesthetics with modern typography, creating an inviting visual narrative that appeals to young attendees seeking knowledge and community.', 'SIO Tripura · Kailashahar · May 2025')">
+        <div class="poster-mockup">
+          <div class="poster-mockup-inner">
+            <div class="card-thumb" style="background:#F2EFE6">
+              <div class="thumb-fallback"><i class="ti ti-moon-stars" style="font-size:42px;color:#86EFAC"></i><span class="thumb-fallback-label" style="color:#86EFAC">Islamic Camp 2025</span></div>
+              <img class="thumb-img poster-img" src="images/islamic-camp.jpg" alt="Summer Islamic Camp 2025 poster" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='images/islamic-camp.png'}">
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="card-meta"><span class="badge b-poster">Event poster</span><i class="ti ti-arrow-up-right" style="font-size:15px;color:var(--text-faint)"></i></div>
@@ -357,18 +485,20 @@
 
     <div class="sub-kicker">Web design</div>
     <div class="work-grid">
-      <a class="card" href="https://northeast-healthcare.onrender.com/" target="_blank">
-        <div class="card-thumb">
-          <div class="browser-frame">
-            <div class="browser-bar">
-              <span class="browser-dot" style="background:#FF5F57"></span>
-              <span class="browser-dot" style="background:#FEBC2E"></span>
-              <span class="browser-dot" style="background:#28C840"></span>
-              <span class="browser-url">northeast-healthcare.onrender.com</span>
-            </div>
-            <div class="browser-view" style="background:#080F1C">
-              <div class="thumb-fallback"><i class="ti ti-stethoscope" style="font-size:42px;color:#38BDF8"></i><span class="thumb-fallback-label" style="color:#38BDF8">Northeast Healthcare</span></div>
-              <img class="thumb-img" src="images/web-healthcare.jpg" alt="Northeast Healthcare website" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='https://api.microlink.io/?url=https%3A%2F%2Fnortheast-healthcare.onrender.com&screenshot=true&meta=false&embed=screenshot.url'}">
+      <a class="card web-card" href="https://northeast-healthcare.onrender.com/" target="_blank">
+        <div class="laptop-frame">
+          <div class="laptop-screen">
+            <div class="browser-frame">
+              <div class="browser-bar">
+                <span class="browser-dot" style="background:#FF5F57"></span>
+                <span class="browser-dot" style="background:#FEBC2E"></span>
+                <span class="browser-dot" style="background:#28C840"></span>
+                <span class="browser-url">northeast-healthcare.onrender.com</span>
+              </div>
+              <div class="browser-view" style="background:#080F1C">
+                <div class="thumb-fallback"><i class="ti ti-stethoscope" style="font-size:42px;color:#38BDF8"></i><span class="thumb-fallback-label" style="color:#38BDF8">Northeast Healthcare</span></div>
+                <img class="thumb-img" src="images/web-healthcare.jpg" alt="Northeast Healthcare website" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='https://s.wordpress.com/mshots/v1/https%3A%2F%2Fnortheast-healthcare.onrender.com?w=1280&h=860'}">
+              </div>
             </div>
           </div>
         </div>
@@ -379,18 +509,20 @@
           <div class="card-url">northeast-healthcare.onrender.com ↗</div>
         </div>
       </a>
-      <a class="card" href="https://laxmi-candle-store.vercel.app/" target="_blank">
-        <div class="card-thumb">
-          <div class="browser-frame">
-            <div class="browser-bar">
-              <span class="browser-dot" style="background:#FF5F57"></span>
-              <span class="browser-dot" style="background:#FEBC2E"></span>
-              <span class="browser-dot" style="background:#28C840"></span>
-              <span class="browser-url">laxmi-candle-store.vercel.app</span>
-            </div>
-            <div class="browser-view" style="background:#160C04">
-              <div class="thumb-fallback"><i class="ti ti-flame" style="font-size:42px;color:#FB923C"></i><span class="thumb-fallback-label" style="color:#FB923C">Laxmi Candle Store</span></div>
-              <img class="thumb-img" src="images/web-laxmi.jpg" alt="Laxmi Candle Store website" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='https://api.microlink.io/?url=https%3A%2F%2Flaxmi-candle-store.vercel.app&screenshot=true&meta=false&embed=screenshot.url'}">
+      <a class="card web-card" href="https://laxmi-candle-store.vercel.app/" target="_blank">
+        <div class="laptop-frame">
+          <div class="laptop-screen">
+            <div class="browser-frame">
+              <div class="browser-bar">
+                <span class="browser-dot" style="background:#FF5F57"></span>
+                <span class="browser-dot" style="background:#FEBC2E"></span>
+                <span class="browser-dot" style="background:#28C840"></span>
+                <span class="browser-url">laxmi-candle-store.vercel.app</span>
+              </div>
+              <div class="browser-view" style="background:#160C04">
+                <div class="thumb-fallback"><i class="ti ti-flame" style="font-size:42px;color:#FB923C"></i><span class="thumb-fallback-label" style="color:#FB923C">Laxmi Candle Store</span></div>
+                <img class="thumb-img" src="images/web-laxmi.jpg" alt="Laxmi Candle Store website" onerror="if(this.dataset.s){this.remove()}else{this.dataset.s=1;this.src='https://s.wordpress.com/mshots/v1/https%3A%2F%2Flaxmi-candle-store.vercel.app?w=1280&h=860'}">
+              </div>
             </div>
           </div>
         </div>
@@ -412,11 +544,18 @@
     <div class="contact-box">
       <div>
         <div class="contact-title">Got a project?<br>Let's talk.</div>
-        <p class="contact-sub" style="margin-top:0.75rem">Whether it's a poster, logo, website, or full brand — drop a message and I'll get back to you quickly.</p>
+        <p class="contact-sub" style="margin-top:0.75rem">Whether it's a poster, logo, website, or full brand — drop a message and we'll get back to you quickly.</p>
       </div>
       <div class="contact-links">
+        <a class="c-link" href="tel:+919233551021">
+          <div class="c-link-icon" style="background:rgba(37,211,102,0.14)"><i class="ti ti-phone" style="font-size:17px;color:#25D366"></i></div>
+          <div>
+            <div class="c-link-text-label">Phone / WhatsApp</div>
+            <div class="c-link-text-val">+91 92335 51021</div>
+          </div>
+        </a>
         <a class="c-link" href="mailto:shussain771@gmail.com">
-          <div class="c-link-icon" style="background:rgba(34,211,238,0.13)"><i class="ti ti-mail" style="font-size:17px;color:#67E8F9"></i></div>
+          <div class="c-link-icon" style="background:rgba(251,191,36,0.14)"><i class="ti ti-mail" style="font-size:17px;color:#FCD34D"></i></div>
           <div>
             <div class="c-link-text-label">Email</div>
             <div class="c-link-text-val">shussain771@gmail.com</div>
@@ -442,6 +581,25 @@
     </span>
     <span class="footer-copy">© 2026 · One stop graphic solution · Tripura, India</span>
   </footer>
+</div>
+
+<!-- Floating WhatsApp -->
+<a class="whatsapp-float" href="https://wa.me/919233551021?text=Hi%20DesignHub%2C%20I%27m%20interested%20in%20your%20design%20services" target="_blank">
+  <i class="ti ti-brand-whatsapp"></i>
+  <div class="whatsapp-tooltip">Chat on WhatsApp</div>
+</a>
+
+<!-- Poster detail modal -->
+<div class="modal" id="posterModal">
+  <div class="modal-content">
+    <div class="modal-close" onclick="document.getElementById('posterModal').classList.remove('open')"></div>
+    <img class="modal-img" id="modalPosterImg" src="" alt="">
+    <div class="modal-body">
+      <h2 class="modal-title" id="modalPosterTitle"></h2>
+      <p class="modal-desc" id="modalPosterDesc"></p>
+      <div class="modal-meta" id="modalPosterMeta"></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -490,12 +648,27 @@
   start();
 })();
 
+// Modal function
+window.openPosterModal = function (imgSrc, title, desc, meta) {
+  var modal = document.getElementById('posterModal');
+  document.getElementById('modalPosterImg').src = imgSrc;
+  document.getElementById('modalPosterTitle').textContent = title;
+  document.getElementById('modalPosterDesc').textContent = desc;
+  document.getElementById('modalPosterMeta').textContent = meta;
+  modal.classList.add('open');
+};
+
+// Close modal on background click
+document.getElementById('posterModal').addEventListener('click', function (e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Mark elements for reveal
   var targets = [];
-  document.querySelectorAll('.section, .stats-bar, .hero, .contact-box').forEach(function (s) { targets.push(s); });
+  document.querySelectorAll('.section, .stats-bar, .trusted, .hero, .contact-box').forEach(function (s) { targets.push(s); });
   document.querySelectorAll('.svc, .card').forEach(function (s) { targets.push(s); });
   targets.forEach(function (el) { el.classList.add('reveal'); });
 
