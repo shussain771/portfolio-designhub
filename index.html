@@ -233,6 +233,26 @@
   .client-name { font-size: 13px; font-weight: 600; color: #1a1a2e; letter-spacing: 0.2px; white-space: nowrap; text-align: center; }
   @media (prefers-reduced-motion: reduce) { .client-chip { transition: none; } .client-chip:hover { transform: none; } }
 
+  /* Meet our Team */
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .team-card { position: relative; background: rgba(15,18,56,0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+  .team-card:hover { transform: translateY(-5px); border-color: var(--accent-border); box-shadow: 0 18px 50px rgba(0,0,0,0.32); }
+  .team-photo-wrap { position: relative; aspect-ratio: 1 / 1; overflow: hidden; }
+  .team-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+  .team-card:hover .team-photo { transform: scale(1.06); }
+  .team-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,36,0) 40%, rgba(9,10,36,0.5) 72%, rgba(13,15,46,0.96) 100%); pointer-events: none; }
+  .team-photo-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 54px; font-weight: 800; color: rgba(255,255,255,0.22); background: linear-gradient(135deg, #232196, #14167A); }
+  .team-slash { position: absolute; top: 13px; right: 16px; z-index: 2; font-family: var(--font-display); font-weight: 800; font-size: 26px; color: var(--accent); transform: skewX(8deg); }
+  .team-name-on { position: absolute; left: 18px; right: 18px; bottom: 14px; z-index: 2; }
+  .team-name { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .team-role { font-size: 12.5px; font-weight: 500; color: var(--accent-light); margin-top: 3px; letter-spacing: 0.3px; }
+  .team-body { padding: 18px 20px 22px; }
+  .team-bio { font-size: 13.5px; color: rgba(255,255,255,0.62); line-height: 1.65; margin-bottom: 1rem; }
+  .team-quote { font-family: 'Crimson Text', serif; font-style: italic; font-size: 14.5px; color: rgba(255,255,255,0.85); line-height: 1.55; padding-left: 14px; border-left: 2px solid var(--accent); margin-bottom: 1.1rem; }
+  .team-skills { display: flex; flex-wrap: wrap; gap: 7px; }
+  .team-skill { font-size: 11px; font-weight: 500; padding: 5px 11px; border-radius: 999px; background: rgba(251,191,36,0.12); color: var(--accent-light); border: 1px solid var(--accent-border); }
+  @media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
+
   /* Feel-good micro-motions */
   .nav-links a:not(.nav-cta) { position: relative; }
   .nav-links a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1.5px; background: var(--accent); transition: width 0.28s cubic-bezier(0.4,0,0.2,1); }
@@ -323,6 +343,7 @@
   <div class="nav-links" id="navLinks">
     <a href="#services">Services</a>
     <a href="#work">Work</a>
+    <a href="#team">Team</a>
     <a href="https://www.instagram.com/designhub771/" target="_blank">Instagram</a>
     <a class="nav-cta" href="#contact">Let's talk →</a>
   </div>
@@ -575,6 +596,62 @@
   </div>
 </div>
 
+<!-- TEAM -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="section" id="team">
+    <div class="kicker">Meet our team</div>
+    <div class="sec-title">The duo behind DesignHub.</div>
+    <p class="sec-body">A husband-and-wife team pairing sharp design with solid code. For 5+ years we've turned local brands and big events into unforgettable visuals — together.</p>
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <div class="team-photo-fallback">RP</div>
+          <img class="team-photo" src="images/team/ruksana.jpg" alt="Ruksana Parbin" onerror="this.style.display='none'">
+          <span class="team-slash">\</span>
+          <div class="team-name-on">
+            <div class="team-name">Ruksana Parbin</div>
+            <div class="team-role">Graphic Designer</div>
+          </div>
+        </div>
+        <div class="team-body">
+          <p class="team-bio">The creative force shaping DesignHub's visual language. Ruksana turns ideas into event posters, social graphics and brand visuals that stop the scroll and stay in memory — every color and curve placed with intent.</p>
+          <p class="team-quote">"Good design isn't decoration — it's communication. If it doesn't make you feel something, it isn't finished."</p>
+          <div class="team-skills">
+            <span class="team-skill">Poster Design</span>
+            <span class="team-skill">Social Media</span>
+            <span class="team-skill">Brand Visuals</span>
+            <span class="team-skill">Typography</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <div class="team-photo-fallback">SH</div>
+          <img class="team-photo" src="images/team/sultan.jpg" alt="Sultan Hussain" onerror="this.style.display='none'">
+          <span class="team-slash">\</span>
+          <div class="team-name-on">
+            <div class="team-name">Sultan Hussain</div>
+            <div class="team-role">Web Developer & Designer</div>
+          </div>
+        </div>
+        <div class="team-body">
+          <p class="team-bio">Where design meets code. Sultan builds the websites and digital experiences that bring DesignHub's work to life — fast, responsive and pixel-perfect. Part developer, part designer, fully obsessed with the details.</p>
+          <p class="team-quote">"A great website should feel effortless to use and impossible to forget. Function first — but never at the cost of beauty."</p>
+          <div class="team-skills">
+            <span class="team-skill">Web Development</span>
+            <span class="team-skill">UI / UX</span>
+            <span class="team-skill">Poster Design</span>
+            <span class="team-skill">Brand Building</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <div style="border-bottom:1px solid var(--border)">
   <div class="section" id="contact">
@@ -723,7 +800,7 @@ document.getElementById('posterModal').addEventListener('click', function (e) {
   // Mark elements for reveal
   var targets = [];
   document.querySelectorAll('.section, .stats-bar, .trusted, .hero, .contact-box').forEach(function (s) { targets.push(s); });
-  document.querySelectorAll('.svc, .card').forEach(function (s) { targets.push(s); });
+  document.querySelectorAll('.svc, .card, .team-card').forEach(function (s) { targets.push(s); });
   targets.forEach(function (el) { el.classList.add('reveal'); });
 
   if (reduce || !('IntersectionObserver' in window)) {
