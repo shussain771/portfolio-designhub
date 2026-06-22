@@ -281,12 +281,15 @@
   /* Trusted by strip */
   .trusted { padding: 2.5rem; max-width: 1100px; margin: 0 auto; }
   .trusted-label { text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1.5rem; }
-  .trusted-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 16px; }
-  .client-chip { display: flex; align-items: center; justify-content: center; height: 80px; min-width: 140px; padding: 5px 8px; border: 1px solid var(--border); border-radius: 13px; background: #ffffff; transition: transform 0.25s, box-shadow 0.25s; }
+  .marquee { overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
+  .marquee-track { display: flex; flex-wrap: nowrap; width: max-content; align-items: center; gap: 16px; animation: marquee 32s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
+  .client-chip { flex-shrink: 0; display: flex; align-items: center; justify-content: center; height: 80px; min-width: 140px; padding: 5px 8px; border: 1px solid var(--border); border-radius: 13px; background: #ffffff; transition: transform 0.25s, box-shadow 0.25s; }
   .client-chip:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.28); }
   .client-logo { max-height: 65px; max-width: 180px; object-fit: contain; display: block; }
   .client-name { font-size: 13px; font-weight: 600; color: #1a1a2e; letter-spacing: 0.2px; white-space: nowrap; text-align: center; }
-  @media (prefers-reduced-motion: reduce) { .client-chip { transition: none; } .client-chip:hover { transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .client-chip { transition: none; } .client-chip:hover { transform: none; } .marquee-track { animation: none; } .marquee { overflow-x: auto; } }
 
   /* Meet our Team */
   .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
@@ -440,21 +443,6 @@
     <div class="stat"><div class="stat-n">2</div><div class="stat-l">Live websites built</div></div>
     <div class="stat"><div class="stat-n">6</div><div class="stat-l">Govt & org clients</div></div>
     <div class="stat"><div class="stat-n">7</div><div class="stat-l">Design services</div></div>
-  </div>
-</div>
-
-<!-- TRUSTED BY -->
-<div style="border-bottom:1px solid var(--border)">
-  <div class="trusted">
-    <div class="trusted-label">Trusted by government bodies & organizations</div>
-    <div class="trusted-row">
-      <div class="client-chip"><img class="client-logo" src="images/clients/tripura-govt.png" alt="Govt of Tripura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Govt. of Tripura</span></div>
-      <div class="client-chip"><img class="client-logo" src="images/clients/forest-dept.png" alt="Tripura Forest Department" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Tripura Forest Dept.</span></div>
-      <div class="client-chip"><img class="client-logo" src="images/clients/sio-tripura.png" alt="SIO Tripura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">SIO Tripura</span></div>
-      <div class="client-chip"><img class="client-logo" src="images/clients/jih-assam.png" alt="JIH Assam South" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">JIH Assam South</span></div>
-      <div class="client-chip"><img class="client-logo" src="images/clients/eduone.png" alt="eduOne Academy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">eduOne Academy</span></div>
-      <div class="client-chip"><img class="client-logo" src="images/clients/art-of-living.png" alt="The Art of Living" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">The Art of Living</span></div>
-    </div>
   </div>
 </div>
 
@@ -797,6 +785,29 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- TRUSTED BY -->
+<div style="border-bottom:1px solid var(--border)">
+  <div class="trusted">
+    <div class="trusted-label">Trusted by government bodies &amp; organizations</div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="client-chip"><img class="client-logo" src="images/clients/tripura-govt.png" alt="Govt of Tripura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Govt. of Tripura</span></div>
+        <div class="client-chip"><img class="client-logo" src="images/clients/forest-dept.png" alt="Tripura Forest Department" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Tripura Forest Dept.</span></div>
+        <div class="client-chip"><img class="client-logo" src="images/clients/sio-tripura.png" alt="SIO Tripura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">SIO Tripura</span></div>
+        <div class="client-chip"><img class="client-logo" src="images/clients/jih-assam.png" alt="JIH Assam South" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">JIH Assam South</span></div>
+        <div class="client-chip"><img class="client-logo" src="images/clients/eduone.png" alt="eduOne Academy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">eduOne Academy</span></div>
+        <div class="client-chip"><img class="client-logo" src="images/clients/art-of-living.png" alt="The Art of Living" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">The Art of Living</span></div>
+        <div class="client-chip" aria-hidden="true"><img class="client-logo" src="images/clients/tripura-govt.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Govt. of Tripura</span></div>
+        <div class="client-chip" aria-hidden="true"><img class="client-logo" src="images/clients/forest-dept.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">Tripura Forest Dept.</span></div>
+        <div class="client-chip" aria-hidden="true"><img class="client-logo" src="images/clients/sio-tripura.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">SIO Tripura</span></div>
+        <div class="client-chip" aria-hidden="true"><img class="client-logo" src="images/clients/jih-assam.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">JIH Assam South</span></div>
+        <div class="client-chip" aria-hidden="true"><img class="client-logo" src="images/clients/eduone.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">eduOne Academy</span></div>
+        <div class="client-chip" aria-hidden="true"><img class="client-logo" src="images/clients/art-of-living.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="client-name" style="display:none">The Art of Living</span></div>
+      </div>
     </div>
   </div>
 </div>
