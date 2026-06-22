@@ -306,7 +306,19 @@
   .team-quote { font-family: 'Crimson Text', serif; font-style: italic; font-size: 14.5px; color: rgba(255,255,255,0.85); line-height: 1.55; padding-left: 14px; border-left: 2px solid var(--accent); margin-bottom: 1.1rem; }
   .team-skills { display: flex; flex-wrap: wrap; gap: 7px; }
   .team-skill { font-size: 11px; font-weight: 500; padding: 5px 11px; border-radius: 999px; background: rgba(251,191,36,0.12); color: var(--accent-light); border: 1px solid var(--accent-border); }
-  @media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .team-card { border-radius: 14px; }
+    .team-slash { top: 9px; right: 11px; font-size: 20px; }
+    .team-name-on { left: 12px; right: 12px; bottom: 10px; }
+    .team-name { font-size: 16px; }
+    .team-role { font-size: 11px; }
+    .team-body { padding: 13px 13px 16px; }
+    .team-bio { font-size: 12px; line-height: 1.55; margin-bottom: 0.8rem; }
+    .team-quote { font-size: 12.5px; padding-left: 11px; margin-bottom: 0.9rem; }
+    .team-skills { gap: 5px; }
+    .team-skill { font-size: 10px; padding: 4px 9px; }
+  }
 
   /* Feel-good micro-motions */
   .nav-links a:not(.nav-cta) { position: relative; }
