@@ -381,7 +381,23 @@
     .svc-foot { margin-top: 0.85rem; }
     .svc-wide { grid-column: span 2; }
     .svc-wide-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .work-grid { grid-template-columns: 1fr; }
+    .work-grid {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+      padding: 4px 1.25rem 12px;
+      scroll-padding-left: 1.25rem;
+      scrollbar-width: none;
+    }
+    .work-grid::-webkit-scrollbar { display: none; }
+    .work-grid > .card { flex: 0 0 80%; scroll-snap-align: start; }
+    .sub-kicker { display: flex; }
+    .sub-kicker::after { content: 'Swipe \2192'; margin-left: auto; align-self: center; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: none; color: var(--text-faint); }
     .contact-box { flex-direction: column; align-items: stretch; padding: 1.75rem; }
     .contact-links { min-width: 0; width: 100%; }
     .section { padding: 2.75rem 1.25rem; }
@@ -439,10 +455,10 @@
 <!-- STATS -->
 <div style="border-bottom:1px solid var(--border)">
   <div class="stats-bar">
-    <div class="stat"><div class="stat-n">12+</div><div class="stat-l">Projects delivered</div></div>
+    <div class="stat"><div class="stat-n">100+</div><div class="stat-l">Projects delivered</div></div>
     <div class="stat"><div class="stat-n">2</div><div class="stat-l">Live websites built</div></div>
-    <div class="stat"><div class="stat-n">6</div><div class="stat-l">Govt & org clients</div></div>
-    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Design services</div></div>
+    <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Govt & org clients</div></div>
+    <div class="stat"><div class="stat-n">12</div><div class="stat-l">Design services</div></div>
   </div>
 </div>
 
